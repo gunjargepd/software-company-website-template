@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+  <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Company - Software Development</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+      .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        color: white;
+      }
+      .hero-content {
+        text-align: center;
+        padding: 80px 0;
+      }
+      .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btn-custom {
+        background-color: white;
+        color: #667eea;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: all 0.3s;
+      }
+      .btn-custom:hover {
+        background-color: #f8f9fa;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+      .story-section {
+        padding: 100px 0;
+      }
+      .story-tag {
+        color: #667eea;
+        font-weight: bold;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+      .story-tag::before {
+        content: "— ";
+        margin-right: 10px;
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 50px;
+        color: #333;
+      }
+      .tab-buttons {
+        margin: 40px 0;
+      }
+      .tab-btn {
+        background-color: #667eea;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        border-radius: 25px;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+      .tab-btn:hover, .tab-btn.active {
+        background-color: #5a6fd8;
+        transform: translateY(-2px);
+      }
+      .services-section {
+        background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(102, 126, 234, 0.9)), url('imgs/key3.webp');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+      }
+      .service-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px 25px;
+        margin: 25px 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+        height: 100%;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      }
+      .service-card h4 {
+        color: #333;
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        margin-top: 10px;
+      }
+      .service-card p {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        flex-grow: 1;
+        margin-bottom: 0;
+      }
+      .service-icon {
+        font-size: 3rem;
+        color: #667eea;
+        margin-bottom: 20px;
+      }
+      .pricing-section {
+        padding: 100px 0;
+        background-color: #f8f9fa;
+      }
+      .pricing-card {
+        background: white;
+        border-radius: 15px;
+        padding: 40px 30px;
+        margin: 20px 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+        text-align: center;
+        height: 100%;
+      }
+      .pricing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      }
+      .pricing-card.featured {
+        border: 3px solid #667eea;
+        transform: scale(1.05);
+      }
+      .price {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #667eea;
+        margin: 20px 0;
+      }
+      .contact-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      }
+      .contact-info {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        height: 100%;
+      }
+      .contact-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+      .contact-item {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .contact-item:last-child {
+        border-bottom: none;
+      }
+      .contact-item h5 {
+        color: #fff;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+      .contact-item i {
+        color: #ffd700;
+        font-size: 1.2rem;
+      }
+      .contact-form-wrapper {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        height: 100%;
+      }
+      .contact-form-header h3 {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+      .contact-form .form-label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 8px;
+      }
+      .contact-form .form-control, .contact-form .form-select {
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        padding: 12px 15px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+      }
+      .contact-form .form-control:focus, .contact-form .form-select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+      }
+      .contact-form .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 10px;
+        padding: 15px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .contact-form .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+      }
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 50px 0 30px;
+      }
+      .navbar-custom {
+        background-color: #667eea !important;
+        padding: 15px 0;
+      }
+      .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      .nav-link {
+        font-weight: 500;
+        margin: 0 10px;
+      }
+      .about-img {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+    </style>
+</head>
+<body>
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+         <img src="imgs/logo.png" width="40px" height="40px" alt="">Software Company
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pricing">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   </nav>
+
+   <!-- Hero Section -->
+   <section id="home" class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content">
+          <h1>Customize Your Own Software</h1>
+          <p>Your technology partner for software innovation and market-leading Company. We are a digital agency that helps brands to achieve their business outcomes. We see technology as a tool to create amazing things.</p>
+          <button class="btn btn-custom">GET STARTED</button>
+        </div>
+        <div class="col-lg-6">
+          <img src="imgs/team1.jpg" class="img-fluid rounded" alt="Team" style="box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <!-- About Section -->
+   <section id="about" class="story-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <img src="imgs/photo2.jpg" class="about-img" alt="About Us">
+        </div>
+        <div class="col-lg-6">
+          <div class="story-tag">OUR STORY</div>
+          <h2 class="section-title">Our team comes with the experience and knowledge</h2>
+          
+          <div class="tab-buttons">
+            <button class="tab-btn active" onclick="showTab('who')">Who We Are</button>
+            <button class="tab-btn" onclick="showTab('vision')">Our Vision</button>
+            <button class="tab-btn" onclick="showTab('history')">Our History</button>
+          </div>
+          
+          <div id="who" class="tab-content-custom">
+            <p>Simple Software is a software development company. In business since August, 2009; Simple Software works for customers who needed customized software.</p>
+            <p>We have 15 years of relationships with top ISVs, successfully delivering dozens of Company including Web and mobile applications, Cloud-based applications and services, back-end enterprise software, embedded and kiosk systems.</p>
+          </div>
+          
+          <div id="vision" class="tab-content-custom" style="display: none;">
+            <p>About half of Dayspring's new custom software clients are commissioning a software project for the first time. From hundreds of design and development projects.</p>
+            <p>We're glad to answer your questions and discuss your software design needs. Generally, clients approach Dayspring after confirming that existing software Company don't meet requirements and can't be sufficiently customized.</p>
+          </div>
+          
+          <div id="history" class="tab-content-custom" style="display: none;">
+            <p>Simple Software provides extensible software development teams across a wide range of technologies with robust SDLC processes that can spin up quickly and maximize your budget potential.</p>
+            <p>Our team of software developers and user experience specialists averages 14 years' experience—significantly higher than the industry average.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <!-- Services Section -->
+   <section id="services" class="services-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="story-tag" style="color: white;">Services</div>
+        <h2 class="section-title" style="color: white;">Our Best Services</h2>
+        <p style="color: white; max-width: 600px; margin: 0 auto;">Simple Software provides extensible software 
+          development teams across a wide range of technologies with robust SDLC processes that can spin up quickly and maximize your budget potential</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <h4>Refreshing Design</h4>
+            <p>Involves modernizing and revitalizing a website to keep it relevant,
+               user-friendly, and aligned with current design trends. Whether you're looking to update your site's aesthetics.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h4>Custom Software</h4>
+            <p>We're glad to answer your questions and discuss. Generally, clients approach Dayspring after confirming that software don't meet requirements and can't be sufficiently customized.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h4>Priorities to Yours</h4>
+            <p>We concern ourselves with your project, not billable hours. We put people first, not only because that leads to superior results but also for it's the right way to do business.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h4>Speed Optimized</h4>
+            <p>Involves a series of techniques and best practices aimed at reducing load times, improving responsiveness, and enhancing the overall performance of your website.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h4>Strong Communicators</h4>
+            <p>Ideas flow, and problem-solving is at its best when communication is a priority. Confusion, conflicts, and crises never have the opportunity to develop.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <h4>Regular Updates</h4>
+            <p>In the rapidly evolving digital landscape, maintaining a dynamic and up-to-date website is crucial for sustaining user engagement, security, and functionality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <!-- Careers Section -->
+   <section id="pricing" class="pricing-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="story-tag">Careers</div>
+        <h2 class="section-title">Tailored Software Company for Every Need</h2>
+        <p>Discover the perfect plan to bring your project to life with our expert software development services.</p>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6">
+          <div class="pricing-card">
+            <h4>Basic</h4>
+            <p>Ideal for startups and small projects</p>
+            <div class="price">CONTACT US</div>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-check text-success me-2"></i>Up to 50 hours of development</li>
+              <li><i class="fas fa-check text-success me-2"></i>1 Dedicated developer</li>
+              <li><i class="fas fa-check text-success me-2"></i>Basic support</li>
+              <li><i class="fas fa-check text-success me-2"></i>Weekly updates</li>
+            </ul>
+            <button class="btn btn-outline-primary">CONTACT US</button>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="pricing-card featured">
+            <h4>Standard</h4>
+            <p>Perfect for growing businesses</p>
+            <div class="price">CONTACT US</div>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-check text-success me-2"></i>Up to 100 hours of development</li>
+              <li><i class="fas fa-check text-success me-2"></i>2 Dedicated developers</li>
+              <li><i class="fas fa-check text-success me-2"></i>Standard support</li>
+              <li><i class="fas fa-check text-success me-2"></i>Bi-weekly updates</li>
+            </ul>
+            <button class="btn btn-primary">CONTACT US</button>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="pricing-card">
+            <h4>Premium</h4>
+            <p>Best for large projects</p>
+            <div class="price">CONTACT US</div>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-check text-success me-2"></i>Up to 200 hours of development</li>
+              <li><i class="fas fa-check text-success me-2"></i>4 Dedicated developers</li>
+              <li><i class="fas fa-check text-success me-2"></i>Premium support</li>
+              <li><i class="fas fa-check text-success me-2"></i>Daily updates</li>
+            </ul>
+            <button class="btn btn-outline-primary">CONTACT US</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <section class="para-section" id="para">
+    <div class="row">
+      <div class="col-md-12" style="text-align: center; background-color: #5a6fd8; padding-bottom: 100px;">
+        <h1 style="color: white;">We Love To Make Perfect <br> Company For Your Business</h1>
+        <p> <pre style="color: white;">Given the breathtaking pace of technological evolution, companies are having to 
+          constantly align/reshape/restructuretheir strategies to meet market demands for new product
+          releases while continuing to service existing clients.
+          Simple Software (SS) serves clients from our 24/7 contact center. We specialize in technical support and customer
+      support services. we provide these services in multiple languages. Our state-of-the art
+     technical contact center system offers an integrated approach to phone, e-mail, portal and chat services,
+      enabling us to provide the high quality Company you are looking for. Moreover,
+     we offer a very flexible pricing model, suitable for any kind of business,
+      from start-ups to multinational enterprises.</pre></p>
+      <button class="btn" type="submit" style="background-color:white;color:#667eea; border-radius: 10pc;padding-left: 30px; padding-right: 30px;border: #333;">Get Started</button>
+      </div>
+    </div>
+   </section>
+
+   <!-- Contact Section -->
+   <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Get in Touch with Us</h2>
+        <p>To introduce yourself or a new contact, clearly state your name and role, then briefly <br>
+          explain the reason for the introduction or the purpose of the communication. End with a clear <br>
+           call to action or next step. </p>
+        <p>Ready to start your next project? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+      </div>
+      
+      <div class="row align-items-stretch">
+        <!-- Contact Information - Left Side -->
+        <div class="col-lg-6 mb-4">
+          <div class="contact-info h-100">
+            <div class="mb-4">
+              <h3 class="mb-4"><i class="fas fa-envelope me-3"></i>Let's Talk Business</h3>
+              <p class="mb-4">We're here to help you bring your vision to life. Whether you need custom software development, web applications, or technical consultation, our expert team is ready to deliver exceptional results.</p>
+            </div>
+            
+            <div class="contact-details">
+              <div class="contact-item mb-4">
+                <h5><i class="fas fa-phone me-3"></i>Phone</h5>
+                <p class="mb-1">+91 1012131415</p>
+                <small class="text-light">Call us for immediate assistance</small>
+              </div>
+              
+              <div class="contact-item mb-4">
+                <h5><i class="fas fa-envelope me-3"></i>Email</h5>
+                <p class="mb-1">SoftwareCompany@.in</p>
+                <p class="mb-1">SoftwareCompany@gmail.com</p>
+                <small class="text-light">Send us your project details</small>
+              </div>
+              
+              <div class="contact-item mb-4">
+                <h5><i class="fas fa-map-marker-alt me-3"></i>Office Address</h5>
+                <p class="mb-1">620 Henjwadi Road-1, FL-B, 6/B/56</p>
+                <p class="mb-1">Pune 180235 India</p>
+                <small class="text-light">Visit us for in-person consultation</small>
+              </div>
+              
+              <div class="contact-item">
+                <h5><i class="fas fa-clock me-3"></i>Business Hours</h5>
+                <p class="mb-1">24/7 Support Available</p>
+                <p class="mb-1">Office Hours: 09:00 AM - 6:00 PM</p>
+                <small class="text-light">Monday to Saturday</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form - Right Side -->
+        <div class="col-lg-6 mb-4">
+          <div class="contact-form-wrapper">
+            <div class="contact-form-header mb-4">
+              <h3>Send us a Message</h3>
+              <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+            </div>
+            
+            <form class="contact-form">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName" class="form-label">First Name *</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName" class="form-label">Last Name *</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="Enter your phone">
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="company" class="form-label">Company Name</label>
+                <input type="text" class="form-control" id="company" placeholder="Enter your company name">
+              </div>
+              
+              <div class="mb-3">
+                <label for="service" class="form-label">Service Interested In</label>
+                <select class="form-select" id="service">
+                  <option value="">Select a service</option>
+                  <option value="custom-software">Custom Software Development</option>
+                  <option value="web-development">Web Development</option>
+                  <option value="mobile-app">Mobile App Development</option>
+                  <option value="consulting">Technical Consulting</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject *</label>
+                <input type="text" class="form-control" id="subject" placeholder="Brief description of your project" required>
+              </div>
+              
+              <div class="mb-4">
+                <label for="message" class="form-label">Project Details *</label>
+                <textarea class="form-control" id="message" rows="6" placeholder="Tell us more about your project requirements, timeline, and budget..." required></textarea>
+              </div>
+              
+              <div class="mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms" required>
+                  <label class="form-check-label" for="terms">
+                    I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a>
+                  </label>
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-primary btn-lg w-100">
+                <i class="fas fa-paper-plane me-2"></i>Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <!-- Footer -->
+   <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h5><img src="imgs/logo.png"style="width: 40px; height: 40px;" alt="">Software Company</h5>
+          <p>Making the world a better place through constructing elegant hierarchies.</p>
+          <div class="social-links">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2">
+          <h6>Company</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">Marketing</a></li>
+            <li><a href="#" class="text-white-50">Analytics</a></li>
+            <li><a href="#" class="text-white-50">Commerce</a></li>
+            <li><a href="#" class="text-white-50">Insights</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2">
+          <h6>Support</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">Careers</a></li>
+            <li><a href="#" class="text-white-50">Documentation</a></li>
+            <li><a href="#" class="text-white-50">Guides</a></li>
+            <li><a href="#" class="text-white-50">API Status</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2">
+          <h6>Quick Links</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">About Us</a></li>
+            <li><a href="#" class="text-white-50">Our Team</a></li>
+            <li><a href="#" class="text-white-50">Latest News</a></li>
+            <li><a href="#" class="text-white-50">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="my-4">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="mb-0">© 2025 Software Company. Designed and Developed by Software Company</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">Ready to Get Started</p>
+        </div>
+      </div>
+    </div>
+   </footer>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
+   integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+   
+   <script>
+     // Tab functionality
+     function showTab(tabName) {
+       // Hide all tabs
+       document.querySelectorAll('.tab-content-custom').forEach(tab => {
+         tab.style.display = 'none';
+       });
+       
+       // Remove active class from all buttons
+       document.querySelectorAll('.tab-btn').forEach(btn => {
+         btn.classList.remove('active');
+       });
+       
+       // Show selected tab
+       document.getElementById(tabName).style.display = 'block';
+       
+       // Add active class to clicked button
+       event.target.classList.add('active');
+     }
+     
+     // Smooth scrolling for navigation links
+     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+       anchor.addEventListener('click', function (e) {
+         e.preventDefault();
+         const target = document.querySelector(this.getAttribute('href'));
+         if (target) {
+           target.scrollIntoView({
+             behavior: 'smooth',
+             block: 'start'
+           });
+         }
+       });
+     });
+     
+     // Navbar scroll effect
+     window.addEventListener('scroll', function() {
+       const navbar = document.querySelector('.navbar');
+       if (window.scrollY > 50) {
+         navbar.style.backgroundColor = 'rgba(102, 126, 234, 0.95)';
+       } else {
+         navbar.style.backgroundColor = '#667eea';
+       }
+     });
+     
+     // Contact form submission with confirmation
+     document.querySelector('.contact-form').addEventListener('submit', function(e) {
+       e.preventDefault(); // Prevent default form submission
+       
+       // Show confirmation dialog
+       if (confirm('Are you sure you want to send this message?')) {
+         // If user confirms, show success message
+         alert('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.');
+         
+         // Reset form after successful submission
+         this.reset();
+       }
+       // If user cancels, do nothing (form won't be submitted)
+     });
+   </script>
+</body>
+</html>
